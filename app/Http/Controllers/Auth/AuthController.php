@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -42,8 +43,8 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'username' => 'required|max:191|unique:users',
+            'email' => 'required|email|max:191|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
     }
@@ -57,9 +58,24 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    // code borrowed from:
+    // https://laracasts.com/discuss/channels/requests/laravel-5-middleware-login-with-username-or-email?page=1
+
+    protected function getCredentials(Request $request)
+    {
+        $field = filter_var($request->input('username'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $request->merge([$field => $request->input('username')]);
+        return $request->only($field, 'password');
+    }
+
+    public function loginUsername()
+    {
+        return 'username';
     }
 }
