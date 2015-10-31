@@ -1,2 +1,47 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+$icons-font-path: "../fonts/material-design-icons/";
+$roboto-font-path: "../fonts/roboto/";
 
+@import "node_modules/materialize-css/sass/components/color";
+
+$primary-color: color("pink", "lighten-2") !default;
+$secondary-color: color("pink", "darken-2") !default;
+
+@import "node_modules/materialize-css/sass/materialize";
+
+// Sticky footer: http://materializecss.com/footer.html
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+// Enable non-linear layout while the markup is still correct regarding a
+// table of content a screenreader may generate.
+.h1 { font-size: $h1-fontsize; margin: ($h1-fontsize / 2) 0 ($h1-fontsize / 2.5) 0; }
+.h2 { font-size: $h2-fontsize; margin: ($h2-fontsize / 2) 0 ($h2-fontsize / 2.5) 0; }
+.h3 { font-size: $h3-fontsize; margin: ($h3-fontsize / 2) 0 ($h3-fontsize / 2.5) 0; }
+.h4 { font-size: $h4-fontsize; margin: ($h4-fontsize / 2) 0 ($h4-fontsize / 2.5) 0; }
+.h5 { font-size: $h5-fontsize; margin: ($h5-fontsize / 2) 0 ($h5-fontsize / 2.5) 0; }
+.h6 { font-size: $h6-fontsize; margin: ($h6-fontsize / 2) 0 ($h6-fontsize / 2.5) 0; }
+
+#index-banner {
+    .parallax-container {
+        height: 90vh;
+    }
+
+    .container {
+        padding-top: 1px;
+    }
+}
+
+.page-footer a {
+     color: color("grey", "darken-4");
+
+     &:hover, &:focus {
+          color: color("grey", "darken-2");
+     }
+}
