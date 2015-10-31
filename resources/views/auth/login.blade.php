@@ -1,28 +1,37 @@
 @extends('layouts.default', ['pageTitle' => 'Se connecter'])
 
 @section('body')
-<form method="POST" action="{{ URL::to('auth/login') }}">
-    {!! csrf_field() !!}
+<div class="row">
+    <form class="col l4 offset-l4" method="POST" action="{{ URL::to('auth/login') }}">
+        {!! csrf_field() !!}
+        <h1 class="h2 header center">Bienvenue</h1>
 
-    <div>
-        <label>Nom d'utilisateur ou e-mail
-        <input type="text" name="username" value="{{ old('email') }}"></label>
+        <div class="card">
+            <div class="card-content row">
+                <div class="input-field col s12">
+                    <label for="c0">Nom d'utilisateur ou e-mail</label>
+                    <input id="c0" type="text" name="username" value="{{ old('email') }}">
+                </div>
+                <div class="input-field col s12">
+                    <label for="c1">Mot de passe</label>
+                    <input id="c1" type="password" name="password" id="password">
+                </div>
+            </div>
+            <div class="card-action row">
+                <div class="input-field col s6">
+                    <input id="c2" type="checkbox" name="remember" checked>
+                    <label for="c2"> Se souvenir de moi</label>
+                </div>
+                <div class="input-field col s6">
+                    <button class="btn-large" type="submit">Se connecter</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="col l4 offset-l4 center">
+        <p>
+            Vous n'avez pas encore de compte? Alors <a href="{{ Url::to('auth/register') }}">inscrivez-vous</a>!
+        </p>
     </div>
-
-    <div>
-        <label>Mot de passe
-        <input type="password" name="password" id="password"></label>
-    </div>
-
-    <div>
-        <label><input type="checkbox" name="remember"> Se souvenir de moi</label>
-    </div>
-
-    <div>
-        <button type="submit">Se connecter</button>
-    </div>
-</form>
-<p>
-    <a href="{{ Url::to('auth/register') }}">S'inscrire</a>
-</p>
+</div>
 @stop
