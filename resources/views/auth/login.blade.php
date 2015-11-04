@@ -3,7 +3,7 @@
 @section('body')
 <div class="container">
     <div class="row">
-        <form class="col l4 offset-l4 m8 offset-m2 s12" method="POST" action="{{ URL::to('auth/login') }}">
+        <form class="col l6 offset-l3 m8 offset-m2 s12" method="POST" action="{{ URL::to('auth/login') }}">
             {!! csrf_field() !!}
             <h1 class="h2 header center">Bienvenue</h1>
 
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </form>
-        <div class="col l4 offset-l4 m8 offset-m2 s12 center">
+        <div class="col l6 offset-l3 m8 offset-m2 s12 center">
             <p>
                 Vous n'avez pas encore de compte? Alors <a href="{{ Url::to('auth/register') }}">inscrivez-vous</a>!
             </p>

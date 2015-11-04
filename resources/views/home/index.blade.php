@@ -32,12 +32,14 @@
 @if (count($users))
 <section class="container">
     <div class="row">
-        <h2 class="header h4">Nos membres</h2>
-        <p class="flow-text">
-@foreach($users->all() as $user)
-            <span class="chip" title="{{ $user->email }}">{{ $user->username }}</span>
-@endforeach
-        </p>
+        <div class="col s12">
+            <h2 class="header h4">Nos membres</h2>
+            <p class="flow-text">
+    @foreach($users->all() as $user)
+                <span class="chip" title="{{ $user->email }}">{{ $user->username }}</span>
+    @endforeach
+            </p>
+        </div>
     </div>
 </section>
 @endif
