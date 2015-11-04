@@ -16,19 +16,6 @@
     </nav>
 
     <main>
-@if (count($errors))
-        <div class="container">
-            <div class="col i12">
-                <h2 class="header">Erreurs</h2>
-                <ul>
-    @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-    @endforeach
-                </ul>
-            </div>
-        </div>
-@endif
-
         @yield('body')
     </main>
     <footer class="page-footer">

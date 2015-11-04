@@ -10,21 +10,36 @@
             <div class="card">
                 <div class="card-content row">
                     <div class="input-field col s12">
-                        <label for="c0">Nom d'utilisateur ou e-mail</label>
-                        <input id="c0" type="text" name="username" value="{{ old('email') }}">
+                        <input id="c0" type="text" name="username" value="{{ old('username') }}"
+                        @if ($errors->has('username'))
+                               class="validate invalid"
+                        @endif
+                        >
+                        <label for="c0"
+                        @if ($errors->has('username') && old('username'))
+                               data-error="{{ $errors->first('username') }}"
+                        @endif
+                        >Nom d'utilisateur ou e-mail</label>
                     </div>
                     <div class="input-field col s12">
+                        <input id="c1" type="password" name="password" id="password"
+                        @if ($errors->has('password'))
+                               class="validate invalid"
+                        @endif
+                        >
                         <label for="c1">Mot de passe</label>
-                        <input id="c1" type="password" name="password" id="password">
                     </div>
                 </div>
                 <div class="card-action row">
-                    <div class="input-field col s6">
+                    <div class="input-field col m6 s12 center-align">
+                        <button class="btn-large" type="submit">
+                            Se&nbsp;connecter
+                            <i class="mdi-action-account-circle material-icons left"></i>
+                        </button>
+                    </div>
+                    <div class="input-field col m6 s12">
                         <input id="c2" type="checkbox" name="remember" checked>
                         <label for="c2"> Se souvenir de moi</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <button class="btn-large" type="submit">Se connecter</button>
                     </div>
                 </div>
             </div>
