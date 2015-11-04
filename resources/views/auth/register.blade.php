@@ -3,7 +3,7 @@
 @section('body')
 <div class="container">
     <div class="row">
-        <form class="col l4 offset-l4 m8 offset-m2 s12" method="POST" action="{{ URL::to('auth/register') }}">
+        <form class="col l6 offset-l3 m8 offset-m2 s12" method="POST" action="{{ URL::to('auth/register') }}">
             {!! csrf_field() !!}
             <h1 class="h2 header center">Nouveau compte</h1>
 
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </form>
-        <div class="col l4 offset-l4 m8 offset-m2 s12 center">
+        <div class="col l6 offset-l3 m8 offset-m2 s12 center">
             <p>
                 Vous possèdez déjà un compte et désirez <a href="{{ Url::to('auth/login') }}">vous connecter</a>.
             </p>
