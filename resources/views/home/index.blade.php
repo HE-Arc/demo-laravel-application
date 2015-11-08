@@ -1,4 +1,4 @@
-@extends('layouts.default', ['pageTitle' => 'Accueil'])
+@extends('layouts.default', ['pageTitle' => trans('messages.Homepage')])
 
 @section('body')
 <div id="index-banner">
@@ -12,16 +12,16 @@
         </div>
         <div class="container valign">
             <div class="row center">
-                <h1 class="h2 header light center">L'application démo de Laravel qui roxe du poney!</h1>
+                <h1 class="h2 header light center">{{ trans('messages.moto') }}</h1>
             </div>
             <div class="row center">
                 <p>
-                    <a class="btn-large waves-effect waves-light" href="{{ URL::to("auth/register") }}">
-                        S'inscrire
+                    <a class="btn-large waves-effect waves-light" href="{{ URL::route('sign up', compact('lang')) }}">
+                        {{ trans('messages.Sign up') }}
                         <i class="mdi-content-add-circle material-icons left"></i>
                     </a>
-                    <a class="btn-large waves-effect waves-light"  href="{{ URL::to("auth/login") }}">
-                        Se connecter
+                    <a class="btn-large waves-effect waves-light"  href="{{ URL::route('sign in', compact('lang')) }}">
+                        {{ trans('messages.Sign in') }}
                         <i class="mdi-action-account-circle material-icons left"></i>
                     </a>
                 </p>
@@ -33,7 +33,7 @@
 <section class="container">
     <div class="row">
         <div class="col s12">
-            <h2 class="header h4">Nos membres</h2>
+            <h2 class="header h4">{{ trans_choice('messages.Our members', count($users)) }}</h2>
             <p class="flow-text">
     @foreach($users->all() as $user)
                 <span class="chip" title="{{ $user->email }}">{{ $user->username }}</span>

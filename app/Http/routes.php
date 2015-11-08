@@ -11,22 +11,43 @@
 |
 */
 
-Route::get('', 'HomeController@getIndex');
-Route::get('home', [
-    'middleware' => 'auth',
-    'uses' => 'HomeController@getHome'
-]);
+Route::get('', function() {
+    return redirect()->route('index', ['language' => App::getLocale()]);
+});
 
-Route::post('home', [
-    'middleware' => 'auth',
-    'uses' => 'HomeController@postHome'
-]);
+Route::group([
+    'prefix' => '{lang}',
+    'where' => ['lang' => '(fr|de|en)'],
+    'middleware' => 'locale'
+], function() {
 
-// Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+    Route::get('', ['as' => 'index', 'uses' => 'HomeController@getIndex']);
 
-// Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+    Route::get('home', [
+        'middleware' => 'auth',
+        'uses' => 'HomeController@getHome'
+    ]);
+
+    Route::post('home', [
+        'middleware' => 'auth',
+        'uses' => 'HomeController@postHome'
+    ]);
+
+    // Authentication routes...
+    Route::get('auth/login', [
+        'as' => 'sign in',
+        'uses' => 'Auth\AuthController@getLogin'
+    ]);
+    Route::post('auth/login', 'Auth\AuthController@postLogin');
+    Route::get('auth/logout', [
+        'as' => 'sign out',
+        'uses' => 'Auth\AuthController@getLogout'
+    ]);
+
+    // Registration routes...
+    Route::get('auth/register', [
+        'as' => 'sign up',
+        'uses' => 'Auth\AuthController@getRegister'
+    ]);
+    Route::post('auth/register', 'Auth\AuthController@postRegister');
+});

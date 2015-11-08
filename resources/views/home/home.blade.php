@@ -1,4 +1,8 @@
-@extends('layouts.default', ['pageTitle' => 'Salut ' . Auth::user()->username])
+@extends('layouts.default', [
+    'pageTitle' => trans('messages.Salut', [
+        'username' => Auth::user()->username
+    ])
+])
 
 @section('body')
 <div class="container">
@@ -6,7 +10,9 @@
         <div class="col m6 s12">
             <h1>{{ Auth::user()->username }}</h1>
             <p>
-                <a class="btn-large waves-effect waves-light" href="{{ URL::to("auth/logout") }}">Se déconnecter</a>
+                <a class="btn-large waves-effect waves-light" href="{{ URL::route('sign out', compact('lang')) }}">
+                    {{ trans('messages.Sign out') }}
+                </a>
             </p>
         </div>
         <form class="col m6 s12" method="POST" action="{{ url("home") }}">

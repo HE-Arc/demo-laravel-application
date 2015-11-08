@@ -1,9 +1,10 @@
-@extends('layouts.default', ['pageTitle' => 'Se connecter'])
+@extends('layouts.default', ['pageTitle' => trans('messages.Sign up')])
 
 @section('body')
 <div class="container">
     <div class="row">
-        <form class="col l6 offset-l3 m8 offset-m2 s12" method="POST" action="{{ URL::to('auth/login') }}">
+        <form class="col l6 offset-l3 m8 offset-m2 s12" method="POST"
+              action="{{ URL::route('sign in', compact('lang')) }}">
             {!! csrf_field() !!}
             <h1 class="h2 header center">Bienvenue</h1>
 
@@ -46,7 +47,8 @@
         </form>
         <div class="col l6 offset-l3 m8 offset-m2 s12 center">
             <p>
-                Vous n'avez pas encore de compte? Alors <a href="{{ Url::to('auth/register') }}">inscrivez-vous</a>!
+                Vous n'avez pas encore de compte? Alors
+                <a href="{{ Url::route('sign up', compact('lang')) }}">inscrivez-vous</a>!
             </p>
         </div>
     </div>
