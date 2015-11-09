@@ -9,6 +9,9 @@
     <div class="row">
         <div class="col m6 s12">
             <h1>{{ Auth::user()->username }}</h1>
+    @if (Auth::user()->country)
+            <p>{{ Auth::user()->country->name }}</p>
+    @endif
             <p>
                 <a class="btn-large waves-effect waves-light" href="{{ URL::route('sign out', compact('lang')) }}">
                     {{ trans('messages.Sign out') }}

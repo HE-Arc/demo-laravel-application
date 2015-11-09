@@ -20,7 +20,7 @@
             <div class="card">
                 <div class="card-content row">
                     <div class="input-field col s12">
-                        <input id="c0" type="text" name="username" value="{{ old('username') }}"
+                        <input id="c0" type="text" name="username" value="{{ old('username') }}" required
                         @if ($errors->has('username'))
                                class="validate invalid"
                         @endif
@@ -32,7 +32,7 @@
                         >Nom d'utilisateur</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="c1" type="email" name="email" value="{{ old('email') }}"
+                        <input id="c1" type="email" name="email" value="{{ old('email') }}" required
                         @if ($errors->has('email'))
                                class="validate invalid"
                         @endif
@@ -44,7 +44,7 @@
                         >Courriel</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="c2" type="password" name="password"
+                        <input id="c2" type="password" name="password" required
                         @if ($errors->has('password'))
                                class="validate invalid"
                         @endif
@@ -52,12 +52,21 @@
                         <label for="c2">Mot de passe</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="c3" type="password" name="password_confirmation"
+                        <input id="c3" type="password" name="password_confirmation" required
                         @if ($errors->has('password_confirmation'))
                                class="validate invalid"
                         @endif
                         >
                         <label for="c3">Confirmation du mot de passe</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <select id="c5" name="country">
+                            <option value="" disabled selected>Choisissez</option>
+                        @foreach ($countries as $country)
+                            <option value="{{ $country->code }}">{{ $country->name }}</option>
+                        @endforeach
+                        </select>
+                        <label for="c5">Votre pays</label>
                     </div>
                     <div class="input-field col s12">
                         <input id="c4" type="checkbox" name="accept">

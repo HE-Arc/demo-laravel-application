@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Country;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
+use View;
 
 class AuthController extends Controller
 {
@@ -32,6 +34,10 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
+
+        View::composer('auth.register', function($view) {
+            $view->with('countries', Country::all());
+        });
     }
 
     /**
@@ -45,6 +51,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'username' => 'required|max:191|unique:users',
             'email' => 'required|email|max:191|unique:users',
+            'country' => 'max:2',
             'accept' => 'required',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -58,11 +65,20 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        if (isset($data['country'])) {
+            $country = Country::where('code', $data['country'])->first();
+
+            $user->country()->associate($country);
+            $user->save();
+        }
+
+        return $user;
     }
 
     // code borrowed from:

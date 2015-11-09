@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 use Redirect;
 use View;
 
+
 class HomeController extends Controller
 {
     public function getIndex() {
         if (Auth::check()) {
-            return Redirect::to("home");
+            return redirect(route('home', ['lang' => Request::route()->parameter('lang')]));
         }
         return View::make('home.index', ['users' => User::all()]);
     }

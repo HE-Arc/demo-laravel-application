@@ -24,6 +24,7 @@ Route::group([
     Route::get('', ['as' => 'index', 'uses' => 'HomeController@getIndex']);
 
     Route::get('home', [
+        'as' => 'home',
         'middleware' => 'auth',
         'uses' => 'HomeController@getHome'
     ]);
