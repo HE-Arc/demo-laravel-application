@@ -1,5 +1,5 @@
 @extends('layouts.default', [
-    'pageTitle' => trans('messages.Salut', [
+    'pageTitle' => trans('messages.Hi :username', [
         'username' => Auth::user()->username
     ])
 ])
@@ -10,10 +10,13 @@
         <div class="col m6 s12">
             <h1>{{ Auth::user()->username }}</h1>
     @if (Auth::user()->country)
-            <p>{{ Auth::user()->country->name }}</p>
+            <ul>
+                <li>{{ trans('messages.E-mail :email', ['email' => Auth::user()->email]) }}</li>
+                <li>{{ trans('messages.Country :country', ['country' => Auth::user()->country->name]) }}</li>
+            </ul>
     @endif
             <p>
-                <a class="btn-large waves-effect waves-light" href="{{ URL::route('sign out', compact('lang')) }}">
+                <a class="btn-large waves-effect waves-light" href="{{ route('sign out', compact('lang')) }}">
                     {{ trans('messages.Sign out') }}
                 </a>
             </p>

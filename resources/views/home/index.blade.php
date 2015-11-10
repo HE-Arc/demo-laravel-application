@@ -16,11 +16,11 @@
             </div>
             <div class="row center">
                 <p>
-                    <a class="btn-large waves-effect waves-light" href="{{ URL::route('sign up', compact('lang')) }}">
+                    <a class="btn-large waves-effect waves-light" href="{{ route('sign up', compact('lang')) }}">
                         {{ trans('messages.Sign up') }}
                         <i class="mdi-content-add-circle material-icons left"></i>
                     </a>
-                    <a class="btn-large waves-effect waves-light"  href="{{ URL::route('sign in', compact('lang')) }}">
+                    <a class="btn-large waves-effect waves-light"  href="{{ route('sign in', compact('lang')) }}">
                         {{ trans('messages.Sign in') }}
                         <i class="mdi-action-account-circle material-icons left"></i>
                     </a>

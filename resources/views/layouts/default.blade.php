@@ -11,13 +11,13 @@
 <body>
     <nav>
         <div class="nav-wrapper container">
-            <a href="{{ URL::route('index', compact('lang')) }}" class="brand-logo">Demo</a>
+            <a href="{{ route('index', compact('lang')) }}" class="brand-logo">Demo</a>
             <ul id="nav-mobile" class="right">
                 <li>
                     <a href="#" class="dropdown-button btn" data-activates="dd">{{ trans('messages.' . $lang) }}</a>
                     <ul class="dropdown-content" id="dd">
                     @foreach (['en', 'fr', 'de'] as $ln)
-                        <li><a href="{{ Url::route('index', ['lang' => $ln]) }}">
+                        <li><a href="{{ route('index', ['lang' => $ln]) }}">
                             {{ trans('messages.' . $ln) }}
                         </a></li>
                     @endforeach
@@ -34,14 +34,14 @@
         <div class="container">
             <div class="row">
                 <div class="col l4 s12">
-                    <h2 class="h5 header">Liens</h2>
+                    <h2 class="h5 header">{{ trans('messages.About us') }}</h2>
                     <ul>
-                        <li><a href="https://github.com/HE-Arc/demo-laravel-application">Code source</a></li>
-                        <li><a href="https://github.com/HE-Arc/demo-laravel-application/issues/new">Reporter un problème</a></li>
+                        <li><a href="https://github.com/HE-Arc/demo-laravel-application">{{ trans('messages.Source code') }}</a></li>
+                        <li><a href="https://github.com/HE-Arc/demo-laravel-application/issues/new">{{ trans('messages.Report a problem') }}</a></li>
                     </ul>
                 </div>
                 <div class="col l4 s12">
-                    <h2 class="h5 header">Outils</h2>
+                    <h2 class="h5 header">{{ trans('messages.Powered by') }}</h2>
                     <ul>
                         <li><a href="http://materializecss.com/">Materialize</a></li>
                         <li><a href="http://laravel.com/">Laravel</a></li>
@@ -49,7 +49,7 @@
                     </ul>
                 </div>
                 <div class="col l4 s12">
-                    <h2 class="h5 header">Ressources</h2>
+                    <h2 class="h5 header">{{ trans('messages.Resources') }}</h2>
                     <ul>
                         <li><a href="https://developer.mozilla.org/">Mozilla Developer Network</a></li>
                         <li><a href="http://caniuse.com/">Can I Use?</a></li>
