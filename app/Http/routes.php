@@ -17,6 +17,11 @@ Route::get('home', [
     'uses' => 'HomeController@getHome'
 ]);
 
+Route::post('home', [
+    'middleware' => 'auth',
+    'uses' => 'HomeController@postHome'
+]);
+
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
