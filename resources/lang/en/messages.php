@@ -3,6 +3,7 @@
 return [
     // home.index
     "moto" => "The Laravel demo application that rocks!",
+    "Vote" => "Vote",
     // home.home
     "Hi :username" => "Hi :username",
     "E-mail :email" => "Email: :email",

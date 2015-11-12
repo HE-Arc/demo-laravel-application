@@ -34,6 +34,9 @@ Route::group([
         'uses' => 'HomeController@postHome'
     ]);
 
+    Route::get('vote', ['as' => 'vote', 'uses' => 'VoteController@getIndex']);
+    Route::post('vote', 'VoteController@postIndex');
+
     // Authentication routes...
     Route::get('auth/login', [
         'as' => 'sign in',
