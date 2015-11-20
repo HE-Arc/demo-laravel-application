@@ -33,13 +33,15 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
         $this->middleware('guest', ['except' => 'getLogout']);
 
         View::composer('auth.register', function($view) {
             $view->with('countries', Country::all());
         });
+
+        $this->loginPath = route('sign in', $request->route()->parameters());
     }
 
     /**

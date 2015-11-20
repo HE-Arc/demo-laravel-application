@@ -36,8 +36,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next)
     {
         if ($this->auth->check()) {
-            $language = $request->route()->parameter('lang') || App::getLocale();
-            return redirect(route('home', ['lang' => $language]));
+            return redirect(route('home', $request->route()->parameters()));
         }
 
         return $next($request);
