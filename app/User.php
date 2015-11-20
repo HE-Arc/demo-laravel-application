@@ -40,4 +40,8 @@ class User extends Model implements AuthenticatableContract,
     public function country() {
         return $this->belongsTo('App\Country');
     }
+
+    public function getGravatarAttribute() {
+        return "http://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?s=40";
+    }
 }

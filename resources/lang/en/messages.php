@@ -7,6 +7,8 @@ return [
     "Hi :username" => "Hi :username",
     "E-mail :email" => "Email: :email",
     "Country :country" => "Country: :country",
+    "Account" => "Account",
+    "Update" => "Update",
     // auth.login
     "Welcome" => "Welcome",
     "Username or E-mail" => "Username or Email",

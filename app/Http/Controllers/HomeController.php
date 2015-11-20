@@ -11,9 +11,9 @@ use View;
 
 class HomeController extends Controller
 {
-    public function getIndex() {
+    public function getIndex(Request $request) {
         if (Auth::check()) {
-            return redirect(route('home', ['lang' => Request::route()->parameter('lang')]));
+            return redirect(route('home', $request->route()->parameters()));
         }
         return View::make('home.index', ['users' => User::all()]);
     }
@@ -49,6 +49,6 @@ class HomeController extends Controller
             $user->save();
         }
 
-        return Redirect::to("home");
+        return Redirect::route('home', $request->route()->parameters());
     }
 }
