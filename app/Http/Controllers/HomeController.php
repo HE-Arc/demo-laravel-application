@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use View;
-use Redirect;
+use App\User;
+use Auth;
 use Illuminate\Http\Request;
+use Redirect;
+use View;
 
 class HomeController extends Controller
 {
