@@ -34,7 +34,7 @@ return [
     "Sign out" => "Sign out",
     "About us" => "About us",
     "Powered by" => "Powered by",
-    "Resources" => "Resouces",
+    "Resources" => "Resources",
     "Source code" => "Source code",
     "Report a problem" => "Report a bug",
     "en" => "english",

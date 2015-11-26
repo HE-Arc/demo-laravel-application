@@ -36,9 +36,10 @@ class AuthController extends Controller
     public function __construct(Request $request)
     {
         $this->middleware('guest', ['except' => 'getLogout']);
+        $lang = $request->route()->parameter('lang');
 
-        View::composer('auth.register', function($view) {
-            $view->with('countries', Country::all());
+        View::composer('auth.register', function($view) use ($lang) {
+            $view->with('countries', Country::withTranslation()->get());
         });
 
         $this->loginPath = route('sign in', $request->route()->parameters());

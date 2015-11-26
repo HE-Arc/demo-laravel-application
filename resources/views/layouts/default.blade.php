@@ -11,7 +11,7 @@
 <body>
     <nav>
         <div class="nav-wrapper container">
-            <a href="{{ route('index', compact('lang')) }}" class="brand-logo">Demo</a>
+            <h1><a href="{{ route('index', compact('lang')) }}" class="brand-logo">Demo</a></h1>
             <ul id="nav-mobile" class="right">
                 <li>
                     <a href="#" class="dropdown-button btn" data-activates="dd">{{ trans('messages.' . $lang) }}</a>

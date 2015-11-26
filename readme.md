@@ -15,4 +15,7 @@ $ composer install
 $ # adapt the .env.example
 $ npm install
 $ gulp --production
+$ php artisan migrate
+$ php artisan db:seed
+$ # configure the web browser if necessary.
 ```
