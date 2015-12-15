@@ -19,7 +19,10 @@
             </ul>
     @endif
             <p>
-                <a class="btn-large waves-effect waves-light" href="{{ route('sign out', compact('lang')) }}">
+                <a class="btn-large waves-effect waves-light" href="{{ route('vote', compact('lang')) }}">
+                    {{ trans('messages.Vote') }}
+                </a>
+                <a class="btn-flat waves-effect waves-light" href="{{ route('sign out', compact('lang')) }}">
                     {{ trans('messages.Sign out') }}
                 </a>
             </p>
