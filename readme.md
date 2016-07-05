@@ -14,8 +14,22 @@ $ cd demo-laravel-application
 $ composer install
 $ # adapt the .env.example
 $ npm install
-$ gulp --production
+$ npm run prod
 $ php artisan migrate
 $ php artisan db:seed
 $ # configure the web browser if necessary.
+```
+
+## Docker setup
+
+Docker permet de créer un environnement complet de services indépendants
+
+```shell
+$ docker-compose build
+$ docker-compose up -d
+$ docker-compose exec php /bin/sh
+# su john
+$ . /etc/profile
+$ cd ~/html
+$ # then follow the normal installation.
 ```

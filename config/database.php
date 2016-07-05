@@ -54,10 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('MYSQL_HOST', env('DB_HOST', 'localhost')),
-            'database'  => env('MYSQL_DATABASE', env('DB_DATABASE', 'forge')),
-            'username'  => env('MYSQL_USERNAME', env('DB_USERNAME', 'forge')),
-            'password'  => env('MYSQL_PASSWORD', env('DB_PASSWORD', '')),
+            'host'      => env('DB_HOST', 'localhost'),
+            'database'  => env('DB_DATABASE', 'forge'),
+            'username'  => env('DB_USERNAME', 'forge'),
+            'password'  => env('DB_PASSWORD', ''),
             'charset'   => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix'    => '',
