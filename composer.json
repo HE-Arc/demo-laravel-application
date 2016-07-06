@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "~5.2.39",
-        "caouecs/laravel4-lang": "^2.0",
+        "caouecs/laravel-lang": "~3.0",
         "dimsav/laravel-translatable": "^5.6"
     },
     "require-dev": {
@@ -33,13 +33,14 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "php artisan clear-compiled",
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize"
         ],
         "pre-update-cmd": [
             "php artisan clear-compiled"
         ],
         "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
         ],
         "post-root-package-install": [

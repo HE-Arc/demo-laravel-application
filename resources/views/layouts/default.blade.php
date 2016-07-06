@@ -60,7 +60,7 @@
         </div>
         <div class="footer-copyright">
             <div class="container right-align">
-                © {{ trans('messages.copyright', ['year' => 2015]) }}
+                © {{ trans('messages.copyright', ['year' => '2015 - 2016']) }}
             </div>
         </div>
     </footer>
