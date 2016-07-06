@@ -1,5 +1,7 @@
 # Demo laravel application
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/greut/laravel.svg?maxAge=2592000?style=flat-square)](https://hub.docker.com/r/greut/laravel)
+
 Une application d'exemple avec le framework Laravel. Qui a pour but de donner
 un exemple, pas forcément idéal ni universel, de ce qu'on peut faire.
 
