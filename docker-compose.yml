@@ -3,7 +3,6 @@ version: '2'
 services:
   nginx:
     image: nginx:1.10-alpine
-    hostname: nginx
     volumes:
       - ".:/var/www/html:ro"
       - "./nginx:/etc/nginx/conf.d:ro"
@@ -15,7 +14,6 @@ services:
   php:
     image: greut/laravel:latest
     build: .
-    hostname: php
     environment:
       - DB_CONNECTION=mysql
       - DB_HOST=mysql

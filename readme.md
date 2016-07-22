@@ -8,18 +8,22 @@ un exemple, pas forcément idéal ni universel, de ce qu'on peut faire.
 Le meilleur moyen de s'en servir et de refaire ce qui a été fait ici et
 essayant de le modifier selon vos envies.
 
+## Téléversement
+
+```shell
+$ git clone https://github.com/HE-Arc/demo-laravel-application
+$ cd demo-laravel-application
+```
+
 ## Installation
 
 ```shell
-$ git clone https://github.com/HE-Arc/demo-laravel-application.git
-$ cd demo-laravel-application
 $ composer install
-$ # adapt the .env.example
+$ # adapt the .env.example if necessary
 $ npm install
 $ npm run prod
 $ php artisan migrate
 $ php artisan db:seed
-$ # configure the web browser if necessary.
 ```
 
 ## Docker setup

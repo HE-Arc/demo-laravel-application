@@ -13,12 +13,16 @@ gid=`stat -c %g ${statfile}`
 my_uid=`id -u $username`
 my_gid=`id -g $username`
 
-if [ "${my_uid}" != "${uid}" ]; then
+if [ "${uid}" == 1 ]; then
+    echo "The folder was mounted as root... cannot deal with it.."
+elif [ "${my_uid}" != "${uid}" ]; then
     sed -i "s/\(${username}:x:\)${my_uid}/\\1${uid}/" /etc/passwd
     find / -not \( -path /proc -prune \) -user ${my_uid} -exec chown -h ${uid} {} \;
 fi
 
-if [ "${my_gid}" != "${gid}" ]; then
+if [ "${gid}" == 1 ]; then
+    echo "The folder was mounted as root... cannot deal with it.."
+elif [ "${my_gid}" != "${gid}" ]; then
     sed -i "s/\(${username}:x:${uid}:\)${my_gid}/\\1${gid}/" /etc/passwd
 
     groupname=`getent group ${gid} | cut -d: -f1`
@@ -32,4 +36,4 @@ if [ "${my_gid}" != "${gid}" ]; then
 fi
 
 # run php-fpm
-php-fpm
+exec php-fpm

@@ -10,7 +10,6 @@ RUN set -xe \
         gcc \
         icu-dev \
         libc-dev \
-        libmcrypt-dev \
         libtool \
         imagemagick-dev \
         make \
@@ -24,7 +23,6 @@ RUN set -xe \
     # Native modules
     && docker-php-ext-install \
         intl \
-        mcrypt \
         pdo_mysql \
         pdo_pgsql \
     # PECL modules
