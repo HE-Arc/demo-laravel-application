@@ -21,34 +21,38 @@ Route::group([
     'middleware' => 'locale'
 ], function() {
 
-    Route::get('', ['as' => 'index', 'uses' => 'HomeController@getIndex']);
-
+    Route::get('', ['as' => 'index', 'uses' => 'HomeController@index']);
     Route::get('home', [
         'as' => 'home',
         'middleware' => 'auth',
-        'uses' => 'HomeController@getHome'
+        'uses' => 'HomeController@home'
     ]);
-
     Route::post('home', [
         'middleware' => 'auth',
-        'uses' => 'HomeController@postHome'
+        'uses' => 'HomeController@changeEmail'
     ]);
 
-    // Authentication routes...
+    // Authentication routes
     Route::get('auth/login', [
         'as' => 'sign in',
-        'uses' => 'Auth\AuthController@getLogin'
+        'uses' => 'Auth\LoginController@showLoginForm'
     ]);
-    Route::post('auth/login', 'Auth\AuthController@postLogin');
-    Route::get('auth/logout', [
+    Route::post('auth/login', 'Auth\LoginController@login');
+    Route::post('auth/logout', [
         'as' => 'sign out',
-        'uses' => 'Auth\AuthController@getLogout'
+        'uses' => 'Auth\LoginController@logout'
     ]);
 
-    // Registration routes...
+    // Registration routes
     Route::get('auth/register', [
         'as' => 'sign up',
-        'uses' => 'Auth\AuthController@getRegister'
+        'uses' => 'Auth\RegisterController@showRegistrationForm'
     ]);
-    Route::post('auth/register', 'Auth\AuthController@postRegister');
+    Route::post('auth/register', 'Auth\RegisterController@register');
+
+    // Forgot password routes... TODO
+    //Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+    //Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+    //Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+    //Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 });

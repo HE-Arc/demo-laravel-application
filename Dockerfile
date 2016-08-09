@@ -2,7 +2,6 @@ FROM php:7.0-fpm-alpine
 MAINTAINER Yoan Blanc <yoan@dosimple.ch>
 
 RUN set -xe \
-    && apk update \
     && apk add --no-cache \
         autoconf \
         curl \

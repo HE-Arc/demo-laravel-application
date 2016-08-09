@@ -3,52 +3,56 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Auth;
 use Illuminate\Http\Request;
-use Redirect;
-use View;
-
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function getIndex(Request $request) {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
         if (Auth::check()) {
             return redirect(route('home', $request->route()->parameters()));
         }
-        return View::make('home.index', ['users' => User::all()]);
+
+        $users = User::all();
+        return view('index', compact('users'));
     }
 
-    public function getHome() {
-        return View::make('home.home');
+    public function home()
+    {
+        return view('home.home');
     }
 
-    public function postHome(Request $request) {
-
+    public function changeEmail(Request $request)
+    {
         $user = $request->user();
         $email = $request->input('email');
 
-        if ($email !== $user->email) {
-            // Automagically
+        if ($email != $user->email) {
+            // Warning: Read-and-Write potential conflict.
             $this->validate($request, [
-                "email" => "required|email|max:191|unique:users"
+                'email' => 'required|email|max:191|unique:users'
             ]);
-            // vs Manually
-            /*
-            use Validator;
-
-            $validator = Validator::make(compact('email'), [
-                "email" => "required|email|max:191|unique:users",
-            ]);
-
-            if ($validator->fails()) {
-                return Redirect::to("home")->withInput()->withErrors($validator);
-            }
-            */
 
             $user->email = $email;
             $user->save();
         }
 
-        return Redirect::route('home', $request->route()->parameters());
+        return redirect(route('home', $request->route()->parameters()));
     }
 }

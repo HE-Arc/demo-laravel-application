@@ -13,6 +13,6 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.sass('app.scss')
-    mix.copy('node_modules/materialize-css/font/**', 'public/fonts')
+    mix.copy('node_modules/materialize-css/fonts/**', 'public/fonts')
     mix.browserify('app.js')
 });
