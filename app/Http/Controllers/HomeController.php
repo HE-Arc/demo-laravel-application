@@ -9,16 +9,6 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
@@ -30,7 +20,7 @@ class HomeController extends Controller
         }
 
         $users = User::all();
-        return view('index', compact('users'));
+        return view('home.index', compact('users'));
     }
 
     public function home()

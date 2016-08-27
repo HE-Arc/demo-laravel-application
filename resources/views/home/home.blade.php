@@ -18,11 +18,12 @@
                 <li>{{ trans('messages.Country :country', ['country' => Auth::user()->country->name]) }}</li>
             </ul>
     @endif
-            <p>
-                <a class="btn-large waves-effect waves-light" href="{{ route('sign out', compact('lang')) }}">
+            <form method="POST" action="{{ route('sign out', compact('lang')) }}">
+                {{ csrf_field() }}
+                <button type="submit" class="btn-large waves-effect waves-light">
                     {{ trans('messages.Sign out') }}
-                </a>
-            </p>
+                </button>
+            </form>
         </div>
         <form class="col m6 s12" method="POST" action="{{ route('home', compact('lang')) }}">
             <h2 class="h4">{{ trans('messages.Account') }}</h2>

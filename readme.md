@@ -22,8 +22,7 @@ $ composer install
 $ # adapt the .env.example if necessary
 $ npm install
 $ npm run prod
-$ php artisan migrate
-$ php artisan db:seed
+$ php artisan migrate --seed
 ```
 
 ## Docker setup
