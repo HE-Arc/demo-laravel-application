@@ -3,6 +3,7 @@ MAINTAINER Yoan Blanc <yoan@dosimple.ch>
 
 RUN set -xe \
     && apk add --no-cache \
+        acl \
         autoconf \
         curl \
         g++ \
