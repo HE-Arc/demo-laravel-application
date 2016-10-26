@@ -7,7 +7,6 @@ use App\Country;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
 use View;
 
 class RegisterController extends Controller
@@ -86,19 +85,5 @@ class RegisterController extends Controller
         }
 
         return $user;
-    }
-
-    // code borrowed from:
-    // https://laracasts.com/discuss/channels/requests/laravel-5-middleware-login-with-username-or-email?page=1
-    protected function getCredentials(Request $request)
-    {
-        $field = filter_var($request->input('username'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        $request->merge([$field => $request->input('username')]);
-        return $request->only($field, 'password');
-    }
-
-    public function loginUsername()
-    {
-        return 'username';
     }
 }
