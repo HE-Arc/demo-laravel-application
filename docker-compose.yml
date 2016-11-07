@@ -28,7 +28,6 @@ services:
       #- postgres
       - redis
       - mail
-      #- memcached
     volumes:
       - ".:/var/www/html"
 
@@ -36,10 +35,6 @@ services:
     image: redis:3.2-alpine
     volumes:
       - redis:/data
-
-  # Memcached is not yet supported by PHP 7.0
-  #memcached:
-  #  image: memcached:1.4
 
   #postgres:
   #  image: postgres:9.5

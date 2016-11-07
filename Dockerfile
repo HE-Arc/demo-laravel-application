@@ -8,18 +8,15 @@ RUN set -xe \
         curl \
         g++ \
         gcc \
+        git \
         icu-dev \
         libc-dev \
         libtool \
         imagemagick-dev \
         make \
-        # Memcached requires PHP >= 5.2,< 6.0
-        #memcached-dev \
         mysql-dev \
         nodejs \
         postgresql-dev \
-        # Required by node-sass
-        python \
     # Native modules
     && docker-php-ext-install \
         intl \
@@ -29,20 +26,14 @@ RUN set -xe \
     && pecl install \
         apcu \
         imagick \
-        #memcached \
         redis \
         xdebug \
     && docker-php-ext-enable \
         apcu \
         imagick \
-        #memcached \
         redis \
         # Enabling xdebug makes composer slow.
         #xdebug \
-    # NPM global packages
-    && npm install -g \
-        gulp \
-        node-gyp \
     # Clean up
     && apk del \
         autoconf \
