@@ -12,6 +12,7 @@ RUN set -xe \
         icu-dev \
         libc-dev \
         libtool \
+        libsodium-dev \
         imagemagick-dev \
         make \
         mysql-dev \
@@ -20,17 +21,20 @@ RUN set -xe \
     # Native modules
     && docker-php-ext-install \
         intl \
+        pcntl \
         pdo_mysql \
         pdo_pgsql \
     # PECL modules
     && pecl install \
         apcu \
         imagick \
+        libsodium \
         redis \
         xdebug \
     && docker-php-ext-enable \
         apcu \
         imagick \
+        libsodium \
         redis \
         # Enabling xdebug makes composer slow.
         #xdebug \
