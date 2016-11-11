@@ -5,7 +5,7 @@
 
 set -xe
 
-username=john
+username=laravel
 statfile=/var/www/html/docker-compose.yml
 
 uid=`stat -c %u ${statfile}`

@@ -35,7 +35,7 @@ Modifiez le fichier `docker-compose.yml` afin de choisir mysql ou postgresql.
 $ docker-compose build
 $ docker-compose up -d
 $ docker-compose exec php /bin/sh
-# su john
+# su laravel
 $ . /etc/profile
 $ cd ~/html
 $ # then follow the normal installation.

@@ -54,14 +54,14 @@ RUN set -xe \
 
 # User stuff.
 RUN set -x \
-    && adduser -h /home/john -s /bin/sh -D john
+    && adduser -h /home/laravel -s /bin/sh -D laravel
 COPY boot.sh /usr/local/bin/boot.sh
 COPY profile.sh /etc/profile.d/docker.sh
 RUN set -xe \
     && chmod +x /usr/local/bin/boot.sh
 
-USER john
-RUN ln -s /var/www/html /home/john/html
+USER laravel
+RUN ln -s /var/www/html /home/laravel/html
 
 USER root
 CMD [ "/usr/local/bin/boot.sh" ]
