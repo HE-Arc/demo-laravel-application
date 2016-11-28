@@ -20,7 +20,11 @@ RUN set -xe \
         postgresql-dev \
     # Native modules
     && docker-php-ext-install \
+        curl \
         intl \
+        json \
+        exif \
+        fileinfo \
         pcntl \
         pdo_mysql \
         pdo_pgsql \
