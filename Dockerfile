@@ -18,6 +18,8 @@ RUN set -xe \
         mysql-dev \
         nodejs \
         postgresql-dev \
+        # Require by node-sass
+        python \
     # Native modules
     && docker-php-ext-install \
         curl \
