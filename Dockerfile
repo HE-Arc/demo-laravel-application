@@ -1,4 +1,4 @@
-FROM php:7.0-fpm-alpine
+FROM php:7.1-fpm-alpine
 MAINTAINER Yoan Blanc <yoan@dosimple.ch>
 
 RUN set -xe \
@@ -6,6 +6,7 @@ RUN set -xe \
         acl \
         autoconf \
         curl \
+        curl-dev \
         g++ \
         gcc \
         git \
@@ -47,6 +48,7 @@ RUN set -xe \
     # Clean up
     && apk del \
         autoconf \
+        curl-dev \
         gcc \
         libc-dev \
         libtool \
