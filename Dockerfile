@@ -1,5 +1,8 @@
 FROM php:7.1-fpm-alpine
-MAINTAINER Yoan Blanc <yoan@dosimple.ch>
+
+LABEL maintainer="Yoan Blanc <yoan@dosimple.ch>" \
+      org.label-schema.vcs-url="https://github.com/HE-Arc/demo-laravel-application" \
+      org.label-schema.schema-version="1.0"
 
 RUN set -xe \
     && apk add --no-cache \
@@ -18,6 +21,7 @@ RUN set -xe \
         make \
         mysql-dev \
         nodejs \
+        pcre-dev \
         postgresql-dev \
         # Require by node-sass
         python \
@@ -52,6 +56,7 @@ RUN set -xe \
         gcc \
         libc-dev \
         libtool \
+        pcre-dev \
     && rm -rf /var/cache/apk/* \
     # Composer
     && \
