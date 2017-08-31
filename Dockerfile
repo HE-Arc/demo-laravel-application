@@ -4,6 +4,8 @@ LABEL maintainer="Yoan Blanc <yoan@dosimple.ch>" \
       org.label-schema.vcs-url="https://github.com/HE-Arc/demo-laravel-application" \
       org.label-schema.schema-version="1.0"
 
+# Python is required by node-sass
+# xdebug is not enabled globally because it slows down composer.
 RUN set -xe \
     && apk add --no-cache \
         acl \
@@ -22,10 +24,7 @@ RUN set -xe \
         mysql-dev \
         nodejs \
         pcre-dev \
-        postgresql-dev \
-        # Require by node-sass
         python \
-    # Native modules
     && docker-php-ext-install \
         curl \
         intl \
@@ -34,8 +33,6 @@ RUN set -xe \
         fileinfo \
         pcntl \
         pdo_mysql \
-        pdo_pgsql \
-    # PECL modules
     && pecl install \
         apcu \
         imagick \
@@ -45,11 +42,8 @@ RUN set -xe \
     && docker-php-ext-enable \
         apcu \
         imagick \
-        libsodium \
+        sodium \
         redis \
-        # Enabling xdebug makes composer slow.
-        #xdebug \
-    # Clean up
     && apk del \
         autoconf \
         curl-dev \
@@ -58,7 +52,6 @@ RUN set -xe \
         libtool \
         pcre-dev \
     && rm -rf /var/cache/apk/* \
-    # Composer
     && \
         curl -sS https://getcomposer.org/installer | \
             php -- --install-dir=/usr/local/bin --filename=composer
