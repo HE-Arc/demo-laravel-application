@@ -1,6 +1,8 @@
 # Demo laravel application
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/greut/laravel.svg?maxAge=2592000?style=flat-square)](https://hub.docker.com/r/greut/laravel)
+[![Image layers](https://images.microbadger.com/badges/image/greut/laravel.svg)](https://microbadger.com/images/greut/laravel "Get your own image badge on microbadger.com")
+[![Image version](https://images.microbadger.com/badges/version/greut/laravel.svg)](https://microbadger.com/images/greut/laravel "Get your own version badge on microbadger.com")
 
 Une application d'exemple avec le framework Laravel. Qui a pour but de donner
 un exemple, pas forcément idéal ni universel, de ce qu'on peut faire.
