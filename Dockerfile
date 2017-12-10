@@ -33,11 +33,9 @@ RUN set -xe \
         mysql-dev \
         nodejs \
         pcre-dev \
-        python
-RUN set -xe \
-    && docker-php-ext-configure intl --enable-intl
-RUN set -xe \
-     && docker-php-ext-install \
+        python \
+    && docker-php-ext-configure intl --enable-intl \
+    && docker-php-ext-install \
         curl \
         iconv \
         intl \
@@ -46,27 +44,22 @@ RUN set -xe \
         fileinfo \
         pcntl \
         pdo_mysql \
-        sodium
-RUN set -xe \
+        sodium \
     && docker-php-ext-configure gd \
         --with-gd \
         --with-freetype-dir=/usr/include \
         --with-png-dir=/usr/include \
-        --with-jpeg-dir=/usr/include
-RUN set -xe \
+        --with-jpeg-dir=/usr/include \
     && docker-php-ext-install \
-        gd
-RUN set -xe \
+        gd \
     && pecl install \
         apcu \
         imagick \
-        redis
-RUN set -xe \
+        redis \
     && docker-php-ext-enable \
         apcu \
         imagick \
-        redis
-RUN set -xe \
+        redis \
     && apk del --no-cache \
         autoconf \
         curl-dev \
@@ -77,8 +70,7 @@ RUN set -xe \
         libpng-dev \
         libc-dev \
         libtool \
-        pcre-dev
-RUN set -xe \
+        pcre-dev \
     && rm -rf /var/cache/apk/* \
     && \
         curl -sS https://getcomposer.org/installer | \
