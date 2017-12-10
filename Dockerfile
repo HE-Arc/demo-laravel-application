@@ -1,4 +1,4 @@
-FROM php:7.1-fpm-alpine
+FROM php:7.2-fpm-alpine3.6
 
 LABEL maintainer="Yoan Blanc <yoan@dosimple.ch>" \
       org.label-schema.vcs-url="https://github.com/HE-Arc/demo-laravel-application" \
@@ -6,7 +6,6 @@ LABEL maintainer="Yoan Blanc <yoan@dosimple.ch>" \
 
 
 # Python is required by node-sass
-# xdebug is not enabled globally because it slows down composer.
 RUN set -xe \
     && apk add --no-cache \
         acl \
@@ -45,9 +44,9 @@ RUN set -xe \
         json \
         exif \
         fileinfo \
-        mcrypt \
         pcntl \
-        pdo_mysql
+        pdo_mysql \
+        sodium
 RUN set -xe \
     && docker-php-ext-configure gd \
         --with-gd \
@@ -61,14 +60,11 @@ RUN set -xe \
     && pecl install \
         apcu \
         imagick \
-        libsodium \
-        redis \
-        xdebug
+        redis
 RUN set -xe \
     && docker-php-ext-enable \
         apcu \
         imagick \
-        sodium \
         redis
 RUN set -xe \
     && apk del --no-cache \
