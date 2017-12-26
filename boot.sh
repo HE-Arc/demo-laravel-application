@@ -27,7 +27,7 @@ elif [ "${my_gid}" != "${gid}" ]; then
 
     groupname=`getent group ${gid} | cut -d: -f1`
     if [ "${groupname}" == "" ]; then
-        groupname = ${username}_group
+        groupname="${username}_group"
         addgroup -g ${gid} ${groupname}
     fi
     adduser $username $groupname

@@ -34,6 +34,7 @@ RUN set -xe \
         nodejs \
         pcre-dev \
         python \
+        tini \
     && docker-php-ext-configure intl --enable-intl \
     && docker-php-ext-install \
         curl \
@@ -97,4 +98,5 @@ USER laravel
 RUN ln -s /var/www/html /home/laravel/html
 
 USER root
+ENTRYPOINT [ "tini", "--" ]
 CMD [ "/usr/local/bin/boot.sh" ]
