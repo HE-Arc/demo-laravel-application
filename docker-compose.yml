@@ -2,7 +2,7 @@ version: '2'
 
 services:
   nginx:
-    image: nginx:1.11-alpine
+    image: nginx:1.15-alpine
     volumes:
       - ".:/var/www/html:ro"
       - "./nginx:/etc/nginx/conf.d:ro"
@@ -32,7 +32,7 @@ services:
       - ".:/var/www/html"
 
   redis:
-    image: redis:3.2-alpine
+    image: redis:5-alpine
     volumes:
       - redis:/data
 
@@ -49,7 +49,7 @@ services:
   #    - postgres:/var/lib/postgresql/data
 
   mysql:
-    image: mariadb:10.1
+    image: mariadb:10.4
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=forge

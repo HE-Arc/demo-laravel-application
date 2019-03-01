@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine3.6
+FROM php:7.3-fpm-alpine3.9
 
 LABEL maintainer="Yoan Blanc <yoan@dosimple.ch>" \
       org.label-schema.vcs-url="https://github.com/HE-Arc/demo-laravel-application" \
