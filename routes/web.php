@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('', function() {
-    return redirect()->route('index', ['language' => App::getLocale()]);
-});
+Route::get('', 'HomeController@getLocale');
 
 Route::group([
     'prefix' => '{lang}',

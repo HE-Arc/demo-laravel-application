@@ -28,6 +28,10 @@ class HomeController extends Controller
         return view('home.home');
     }
 
+    public function getLocale() {
+        return redirect()->route('index', ['language' => App::getLocale()]);
+    }
+
     public function changeEmail(Request $request)
     {
         $user = $request->user();

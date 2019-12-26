@@ -7,6 +7,7 @@ use App\Country;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use View;
 
 class RegisterController extends Controller
