@@ -9,26 +9,14 @@
   "devDependencies": {
     "cross-env": "^6.0.3",
     "laravel-mix": "^5.0.0",
-    "resolve-url-loader": "^3.1.0",
+    "resolve-url-loader": "^3.1.1",
     "sass": "^1.24.0",
     "sass-loader": "^8.0.0",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.41.2"
   },
   "dependencies": {
-    "browserify-shim": "~3.8.12",
     "jquery": "~3.4.0",
     "materialize-css": "~1.0.0"
-  },
-  "browser": {
-    "materialize": "./node_modules/materialize-css/dist/js/materialize.js"
-  },
-  "browserify": {
-    "transform": [
-      "browserify-shim"
-    ]
-  },
-  "browserify-shim": {
-    "materialize": "materialize"
   }
 }
