@@ -1,4 +1,4 @@
-FROM php:7.3-fpm-alpine3.9
+FROM php:7.3-fpm-alpine3.10
 
 LABEL maintainer="Yoan Blanc <yoan@dosimple.ch>" \
       org.label-schema.vcs-url="https://github.com/HE-Arc/demo-laravel-application" \
@@ -13,6 +13,7 @@ RUN set -xe \
         curl \
         curl-dev \
         dpkg-dev \
+        dumb-init \
         freetype \
         freetype-dev \
         g++ \
@@ -34,7 +35,6 @@ RUN set -xe \
         nodejs \
         pcre-dev \
         python \
-        tini \
     && docker-php-ext-configure intl --enable-intl \
     && docker-php-ext-install \
         curl \
@@ -98,5 +98,5 @@ USER laravel
 RUN ln -s /var/www/html /home/laravel/html
 
 USER root
-ENTRYPOINT [ "tini", "--" ]
+ENTRYPOINT [ "dumb-init", "--" ]
 CMD [ "/usr/local/bin/boot.sh" ]
