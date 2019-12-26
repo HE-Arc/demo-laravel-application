@@ -77,8 +77,10 @@
                         <label for="c5">{{ trans('messages.Your country') }}</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="c4" type="checkbox" name="accept">
-                        <label for="c4">{{ trans('messages.I accept the conditions') }}</label>
+                        <label>
+                            <input type="checkbox" name="accept">
+                            <span>{{ trans('messages.I accept the conditions') }}</span>
+                        </label>
                     </div>
                 </div>
                 <div class="card-action row">

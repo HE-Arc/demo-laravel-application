@@ -1,7 +1,9 @@
 var $ = window.jQuery = window.$ = require('jquery')
-require('materialize')
+var M = require('materialize')
 
 $(function() {
+    M.AutoInit()
+
     $(".parallax").parallax()
-    $("select").material_select()
+    $("select").formSelect()
 })
